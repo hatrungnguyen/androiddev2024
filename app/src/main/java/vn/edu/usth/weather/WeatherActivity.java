@@ -3,6 +3,10 @@ package vn.edu.usth.weather;
 import android.os.Bundle;
 import android.util.Log;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.viewpager.widget.ViewPager;
+
+import com.google.android.material.tabs.TabLayout;
+import vn.edu.usth.weather.WeatherPagerAdapter;
 
 public class WeatherActivity extends AppCompatActivity {
     private static final String TAG = "WeatherActivity";
@@ -13,8 +17,12 @@ public class WeatherActivity extends AppCompatActivity {
         setContentView(R.layout.activity_weather);
 
         Log.i(TAG, "ON_CREATE");
-        ForecastFragment forecastFragment = new ForecastFragment();
-        getSupportFragmentManager().beginTransaction().add(R.id.fl_01, forecastFragment).commit();
+        ViewPager viewPager = findViewById(R.id.view_pager);
+        WeatherPagerAdapter adapter = new WeatherPagerAdapter(getSupportFragmentManager());
+        viewPager.setAdapter(adapter);
+        TabLayout tabLayout = findViewById(R.id.tab_layout);
+        tabLayout.setupWithViewPager(viewPager);
+
     }
 
     @Override
