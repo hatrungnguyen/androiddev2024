@@ -12,5 +12,5 @@ Student Info
 
 * Name: Nguyen Ha Trung
 * ID: 22BI13436
-* Group ID: *Your Group ID here*
-* Project Name: *Your Project Name here*
+* Group ID: 9
+* Project Name: Flight Info
