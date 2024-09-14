@@ -13,9 +13,9 @@ public class WeatherAndForecastFragment extends Fragment {
                              Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.fragment_weather_and_forecast, container, false);        WeatherFragment weatherFragment = new WeatherFragment();
-        getChildFragmentManager().beginTransaction()
-                .add(R.id.weather_container, weatherFragment)
-                .commit();
+//        getChildFragmentManager().beginTransaction()
+//                .add(R.id.weather_container, weatherFragment)
+//                .commit();
         ForecastFragment forecastFragment = new ForecastFragment();
         getChildFragmentManager().beginTransaction()
                 .add(R.id.forecast_container, forecastFragment)
