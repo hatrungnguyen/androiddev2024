@@ -15,12 +15,12 @@ public class WeatherActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_weather);
-
+        TabLayout tabLayout = findViewById(R.id.tab_layout);
         Log.i(TAG, "ON_CREATE");
         ViewPager viewPager = findViewById(R.id.view_pager);
         WeatherPagerAdapter adapter = new WeatherPagerAdapter(getSupportFragmentManager());
         viewPager.setAdapter(adapter);
-        TabLayout tabLayout = findViewById(R.id.tab_layout);
+
         tabLayout.setupWithViewPager(viewPager);
 
     }
