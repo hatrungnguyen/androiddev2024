@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">USTH Thời tiết</string>
+    <string name="action_settings">Cài đặt</string>
+    <string name="first_fragment_label">Đoạn đầu tiên</string>
+    <string name="second_fragment_label">Mảnh thứ hai</string>
+    <string name="next">Kế tiếp</string>
+    <string name="previous">Trước</string>
+    <string name="hello_blank_fragment">Xin chào mảnh trống</string>
+    <string name="cloudy">nhiều mây 21-23C</string>
+    <string name="monday">Thứ hai</string>
+    <string name="tuesday">Thứ ba</string>
+    <string name="friday">Thứ sáu</string>
+    <string name="saturday">Thứ bảy</string>
+    <string name="sunday">Chủ nhật</string>
+    <string name="Wednesday">Thứ Tư</string>
+    <string name="thursday">Thứ năm</string>
+
+</resources>

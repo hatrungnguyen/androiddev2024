@@ -1,100 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="@dimen/padding_large"
-    android:background="@color/background_color">
-
-
-    <TextView
-        android:id="@+id/headerTextView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/header_text"
-        android:textSize="@dimen/text_size_large"
-        android:textColor="@color/text_color_white"
-        android:padding="@dimen/padding_large"
-        android:gravity="center"
-        android:background="@color/primary_color"  />
-    <TextView
-        android:id="@+id/temperatureTextView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/temperature_text"
-        android:textSize="@dimen/text_size_xlarge"
-        android:padding="@dimen/padding_medium"
-        android:gravity="center" />
-
-    <TextView
-        android:id="@+id/weatherIconTextView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="☀️"
-        android:textSize="60sp"
-        android:padding="@dimen/padding_medium"
-        android:gravity="center" />
-
-    <TextView
-        android:id="@+id/weatherDescriptionTextView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/weather_description"
-        android:textSize="@dimen/text_size_large"
-        android:padding="@dimen/padding_medium"
-        android:gravity="center" />
-
+    tools:context=".WeatherActivity">
 
     <com.google.android.material.tabs.TabLayout
-        android:id="@+id/tab_layout"
+        android:id="@+id/tabLayout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-    <com.google.android.material.tabs.TabItem
-        android:id="@+id/tab_weather"
-        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/tab_weather" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-    <com.google.android.material.tabs.TabItem
-        android:id="@+id/tab_forecast"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/tab_forecast" />
+        <com.google.android.material.tabs.TabItem
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Monday" />
 
+        <com.google.android.material.tabs.TabItem
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Tuesday" />
 
+        <com.google.android.material.tabs.TabItem
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Wednesday" />
+    </com.google.android.material.tabs.TabLayout>
 
-    <androidx.viewpager.widget.ViewPager
+    <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/view_pager"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1" />
-<TextView
-android:id="@+id/usthWeatherTextView"
-android:layout_width="match_parent"
-android:layout_height="wrap_content"
-android:text="@string/usth_weather"
-android:textSize="@dimen/text_size_large"
-android:padding="@dimen/padding_large"
-android:gravity="center"
-android:background="@color/primary_color"
-android:textColor="@color/text_color_white" />
-
-<TextView
-android:id="@+id/partlyCloudyTextView"
-android:layout_width="match_parent"
-android:layout_height="wrap_content"
-android:text="@string/partly_cloudy"
-android:textSize="@dimen/text_size_medium"
-android:padding="@dimen/padding_medium"
-android:gravity="center" />
-
-<TextView
-android:id="@+id/showTextView"
-android:layout_width="match_parent"
-android:layout_height="wrap_content"
-android:text="@string/show"
-android:textSize="@dimen/text_size_medium"
-android:padding="@dimen/padding_medium"
-android:gravity="center" />
-
+        android:layout_height="match_parent" />
 </LinearLayout>

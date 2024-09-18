@@ -1,13 +1,18 @@
 <resources>
-    <string name="app_name">Weather App</string>
-    <string name="header_text">Weather Forecast</string>
-    <string name="temperature_text">31°C</string>
-    <string name="weather_description">Sunny</string>
-    <string name="tab_weather">Weather</string>
-    <string name="tab_forecast">Forecast</string>
-    <string name="usth_weather">USTH Weather</string>
-    <string name="partly_cloudy">Partly</string>
-    <string name="show">Show</string>
-    <string name="action_settings" />
+    <string name="app_name">USTH Weather</string>
+    <string name="action_settings">Settings</string>
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="cloudy">cloudy 21-23C</string>
+    <string name="monday">Monday</string>
+    <string name="tuesday">Tuesday</string>
+    <string name="friday">Friday</string>
+    <string name="saturday">Saturday</string>
+    <string name="sunday">Sunday</string>
+    <string name="Wednesday">Wednesday</string>
+    <string name="thursday">Thursday</string>
 
 </resources>
