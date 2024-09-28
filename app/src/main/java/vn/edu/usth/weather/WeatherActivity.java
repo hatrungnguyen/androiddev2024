@@ -1,6 +1,7 @@
 package vn.edu.usth.weather;
 
 import android.Manifest;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.media.MediaPlayer;
 import android.os.Bundle;
@@ -8,6 +9,7 @@ import android.os.Environment;
 import android.util.Log;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;  // Correct import for Toolbar
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.viewpager2.widget.ViewPager2;
@@ -18,6 +20,8 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import android.view.Menu;  // Import for menu
+import android.view.MenuItem;  // Import for menu item
 
 public class WeatherActivity extends AppCompatActivity {
     private static final String TAG = "WeatherActivity";
@@ -29,18 +33,24 @@ public class WeatherActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_weather);
 
+        // Set up the Toolbar
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle("Weather App");
+
         // Check for permissions
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE)
                 != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, REQUEST_CODE_WRITE_EXTERNAL_STORAGE);
         } else {
-            // Permissions already granted, proceed to extract and play the music file
             extractAndPlayMusic();
         }
 
+        // Set up ViewPager and TabLayout
         ViewPager2 viewPager = findViewById(R.id.view_pager);
         WeatherPagerAdapter adapter = new WeatherPagerAdapter(this);
         viewPager.setAdapter(adapter);
+
         TabLayout tabLayout = findViewById(R.id.tabLayout);
         new TabLayoutMediator(tabLayout, viewPager, (tab, position) -> {
             switch (position) {
@@ -56,6 +66,14 @@ public class WeatherActivity extends AppCompatActivity {
             }
         }).attach();
     }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        return true;
+    }
+
+
 
     @Override
     protected void onDestroy() {
@@ -91,7 +109,7 @@ public class WeatherActivity extends AppCompatActivity {
             Toast.makeText(this, "Music is playing", Toast.LENGTH_SHORT).show();
 
         } catch (IOException e) {
-            e.printStackTrace();
+            Log.e(TAG, "Error playing music: " + e.getMessage());
             Toast.makeText(this, "Error playing music", Toast.LENGTH_SHORT).show();
         } finally {
             // Close streams safely
@@ -99,7 +117,7 @@ public class WeatherActivity extends AppCompatActivity {
                 if (inputStream != null) inputStream.close();
                 if (outputStream != null) outputStream.close();
             } catch (IOException e) {
-                e.printStackTrace();
+                Log.e(TAG, "Error closing streams: " + e.getMessage());
             }
         }
     }
