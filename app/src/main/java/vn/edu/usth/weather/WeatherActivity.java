@@ -33,12 +33,16 @@ public class WeatherActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_weather);
 
-        // Set up the Toolbar
+
+        if (savedInstanceState == null) {
+            getSupportFragmentManager().beginTransaction()
+                    .replace(R.id.fragment_container, new ForecastFragment())
+                    .commit();
+        }
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("Weather App");
 
-        // Check for permissions
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE)
                 != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, REQUEST_CODE_WRITE_EXTERNAL_STORAGE);
@@ -46,7 +50,7 @@ public class WeatherActivity extends AppCompatActivity {
             extractAndPlayMusic();
         }
 
-        // Set up ViewPager and TabLayout
+
         ViewPager2 viewPager = findViewById(R.id.view_pager);
         WeatherPagerAdapter adapter = new WeatherPagerAdapter(this);
         viewPager.setAdapter(adapter);
@@ -101,7 +105,7 @@ public class WeatherActivity extends AppCompatActivity {
 
             outputStream.flush();
 
-            // Play the music file
+
             mediaPlayer = new MediaPlayer();
             mediaPlayer.setDataSource(musicFile.getPath());
             mediaPlayer.prepare();
