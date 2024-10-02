@@ -6,7 +6,7 @@
         android:id="@+id/action_refresh"
         android:title="Refresh"
         android:icon="@drawable/reload"
-        app:showAsAction="always" />
+        app:showAsAction="ifRoom" />
     <item
         android:id="@+id/action_settings"
         android:title="Settings"

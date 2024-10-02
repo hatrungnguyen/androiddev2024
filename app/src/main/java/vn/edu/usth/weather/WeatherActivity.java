@@ -1,15 +1,16 @@
 package vn.edu.usth.weather;
 
 import android.Manifest;
-import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Environment;
+import android.os.Handler;
+import android.os.Looper;
 import android.util.Log;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;  // Correct import for Toolbar
+import androidx.appcompat.widget.Toolbar;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.viewpager2.widget.ViewPager2;
@@ -20,13 +21,15 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
-import android.view.Menu;  // Import for menu
-import android.view.MenuItem;  // Import for menu item
+import android.view.Menu;
+import android.view.MenuItem;
+
 
 public class WeatherActivity extends AppCompatActivity {
     private static final String TAG = "WeatherActivity";
     private static final int REQUEST_CODE_WRITE_EXTERNAL_STORAGE = 1;
     private MediaPlayer mediaPlayer;
+    private Handler handler = new Handler(Looper.getMainLooper());
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,6 +78,39 @@ public class WeatherActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
+    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.action_refresh:
+                simulateNetworkRequest();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+
+    private void simulateNetworkRequest() {
+        new Thread(() -> {
+            try {
+
+                Thread.sleep(3000);
+
+
+                handler.post(() -> {
+                    Toast.makeText(WeatherActivity.this, "Data refreshed successfully!", Toast.LENGTH_SHORT).show();
+                });
+            } catch (InterruptedException e) {
+                Log.e(TAG, "Error in network simulation: " + e.getMessage());
+            }
+        }).start();
+    }
+
+    private void refreshData() {
+
+        Log.d(TAG, "Data refreshed!");
+        Toast.makeText(this, "Data refreshed!", Toast.LENGTH_SHORT).show();
+
     }
 
 
@@ -137,4 +173,5 @@ public class WeatherActivity extends AppCompatActivity {
             }
         }
     }
+
 }
